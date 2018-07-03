@@ -1,0 +1,7 @@
+Your request has been sent to your Hero!<
+
+Below are the details of your request
+Title: <%= @request.title %>
+<%= "Description: #{@request.description}" if @request.description != nil %>
+You can see your request here:
+<%= link_to 'See your request', confirmation_request_url(@request) %>

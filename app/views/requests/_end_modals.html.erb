@@ -1,0 +1,42 @@
+<!-- Trigger the modal with a button -->
+
+<button data-toggle="modal" data-target=<%="#doneRequest#{request.id}"%> ><i class="fas fa-check-circle green done-decline-buttons"></i></button>
+<button data-toggle="modal" data-target=<%="#declineRequest#{request.id}"%>><i class="fas fa-times-circle red done-decline-buttons"></i></button>
+
+<!-- DONE MODAL-->
+<div id=<%="doneRequest#{request.id}"%> class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Done content-->
+    <div class="modal-content done-content">
+      <div class="modal-header"><p>Yay! Can't wait to let your coworker know</p></div>
+      <div class="modal-body">
+        <%= simple_form_for :request, url: done_request_path(request), method: :put do |f| %>
+          <%= f.input :end_comment, label: false, as: :text, class: 'form-control', placeholder: "You can add a message (optional)" %>
+          <div class="modal-buttons">
+            <button type="button"  class="btn cancel" data-dismiss="modal">Cancel</button>
+            <%= f.submit "Mark as done!", class: "btn done" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DECLINE MODAL-->
+<div id=<%="declineRequest#{request.id}"%> class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Done decline-->
+    <div class="modal-content decline-content">
+      <div class="modal-header"><p>Do you really want to decline this request?</p></div>
+      <div class="modal-body">
+        <%= simple_form_for :request, url: decline_request_path(request), method: :put do |f| %>
+          <%= f.input :end_comment, label: false, as: :text, class: 'form-control', placeholder: "You may want to explain your decision (optional)" %>
+          <div class="modal-buttons">
+            <button type="button" class="btn cancel" data-dismiss="modal">Cancel</button>
+            <%= f.submit "Decline", class: "btn decline" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

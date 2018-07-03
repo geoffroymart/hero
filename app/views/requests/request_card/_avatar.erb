@@ -1,0 +1,13 @@
+<% if request.slack_avatar %>
+  <div class="element-card-sender-avatar-index">
+    <%= cl_image_tag(request.slack_avatar) %>
+  </div>
+<% elsif request.email %>
+  <div class="element-card-sender-first-letter">
+    <%= request.email.first.capitalize %>
+  </div>
+<% else %>
+  <div class="element-card-avatar-background">
+    <%= image_tag "/logo-hero-white.png", class: "element-card-avatar-placeholder" %>
+  </div>
+<% end %>

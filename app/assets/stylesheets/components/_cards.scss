@@ -1,0 +1,278 @@
+// THIS CSS IS SHARED FOR ALL THE VIEWS
+
+.top-actions {
+  background-color: white;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  h1 {
+    margin-left: 30px;
+  }
+}
+
+#top-actions-index-search-plus {
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: space-between;
+  // padding-left: 30px;
+  // padding-right: 37px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+#query {
+  width: 100%;
+  margin-right: 8px;
+}
+
+#search-bar {
+  display: flex;
+  align-items: center;
+  min-width: 30%;
+  padding: 0 20px;
+
+  > form {
+    width: 100%;
+  }
+}
+
+.plus-button {
+  @media (max-width: $screen-xs-max) {
+    display: flex;
+    justify-content: center;
+    width: 100% !important;
+  }  
+}
+
+.container-elements {
+  margin: 20px 0;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.element-card {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  border-bottom: solid 1px rgba(0,0,0,0.05);
+  height: 100px;
+  &:hover {
+    background-color: lightgray;
+  }
+}
+
+.element-card:last-child {
+  border-bottom: none;
+}
+
+// if there is only one card display it in the middle
+.element-card-show-one {
+  background-color: white;
+  text-align: center;
+  padding: 30px;
+  border-bottom: solid 1px rgba(0,0,0,0.05);
+  padding-bottom: 45px;
+  margin-top:100px;
+}
+//else
+.element-card-show {
+  background-color: white;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  padding: 20px 30px;
+  border-bottom: solid 1px rgba(0,0,0,0.05);
+}
+
+.element-card-show:last-child {
+  border-bottom: none;
+}
+
+.show-top-upper-elements {
+  background-color: white;
+  // display: flex;
+  // padding: 20px 30px;
+  border-bottom: solid 1px rgba(0,0,0,0.05);
+  // padding-bottom: 45px;
+}
+
+.element-card-upper-elements {
+  // display: block;
+  // justify-content: space-around;
+  h1 {
+    padding-top: 20px;
+    padding-left: 30px;
+  }
+}
+
+.show-upper-elements {
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
+  margin: 30px;
+}
+
+.upper-elements-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  // padding: 0 30px;
+  // border-right: 1px solid lightgrey;
+}
+
+.upper-elements-right {
+  padding-bottom: 20px;
+  p {
+    margin: 0;
+  }
+}
+
+.show-box-created-edit-cancel {
+  display: flex;
+  align-items: center;
+  color: grey;
+  // margin-top: 20px;
+  p {
+    margin: 0;
+  }
+}
+
+.show-box-edit-cancel {
+  display: flex;
+  align-items: center;
+  p {
+    margin: 0 8px;
+  }
+}
+
+.show-buttons-done-decline {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+
+.element-card-devise {
+  background-color: white;
+  align-items: center;
+  padding: 20px 30px;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.unread {
+  border-left: solid 10px $green;
+  padding-left: 20px;
+}
+
+.element-card-file {
+  margin-bottom: 20px;
+ // box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-left-elements {
+  display:flex;
+  align-items:center;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.element-card-title {
+  font-weight: bold;
+  color: black;
+  padding-left:20px;
+}
+
+.element-card-description {
+  color: black;
+  padding-left:20px;
+}
+
+.element-card-date {
+  color: grey;
+  margin-right: 40px;
+}
+
+.card-right-elements {
+  display: flex;
+  align-items: center;
+}
+
+.element-card-actions {
+  display: block;
+}
+
+.history-status {
+  min-width: 80px;
+  text-align: center;
+  font-weight: lighter;
+  p {
+    margin: 0;
+  }
+}
+
+.card-title-description-part {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.element-card-attachment {
+  display: flex;
+  justify-content: center;
+}
+
+.element-card-email {
+  font-size: 15px;
+}
+
+.show-personal-note {
+  // padding: 10px 60px;
+  h2 {
+    margin: 0;
+  }
+}
+
+.container-personal-note-elements {
+  // display: flex;
+}
+
+.personal-note-left {
+  // display: flex;
+  // flex-direction: column;
+}
+
+.personal-note-right {
+  // display: flex;
+  // flex-direction: column;
+}
+
+@media (max-width: 420px) {
+  h1 {
+    font-size: 26px;
+  }
+
+  .element-card, .element-card-unread{
+    position: relative;
+    padding-top: 5px;
+  }
+
+  .element-dates{
+    position: absolute;
+    top: 50px;
+    left: 105px;
+  }
+
+  .element-card-title{
+    position: absolute;
+    top: 20px;
+  }
+}
+
+.margin-top-space {
+  margin-top: calc(100vh / 5);
+}
+

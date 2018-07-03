@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="col-sm-8 col-sm-offset-2">
+
+    <div class="container-elements">
+      <div class="element-card-show">
+        <h3 class="title">This request has been cancelled</h3>
+        <% if current_user %>
+          <hr>
+          <%= link_to "Back to requests", requests_path, class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

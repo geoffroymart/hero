@@ -1,0 +1,35 @@
+  <div class="container">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="element-card-devise">
+
+      <div class="text-center">
+        <h2>Sign up</h2>
+      </div>
+
+      <br>
+
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <% resource.build_profile %>
+
+        <div class="form-inputs">
+          <%= f.simple_fields_for :profile do |profile_field| %>
+            <%= profile_field.input :first_name, label: false, placeholder: 'First name', required: false %>
+            <%= profile_field.input :last_name, label: false, placeholder: 'Last name', required: false %>
+            <%= profile_field.input :avatar, label: :'Profile picture' %>
+            <%= profile_field.input :avatar_cache, as: :hidden %>
+          <% end %>
+          <%= f.input :email, label: false, placeholder: 'email*', required: true %>
+          <%= f.input :password, label: false, placeholder: 'password*', required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+          <%= f.input :password_confirmation, label: false, placeholder: 'Confirm your password*', required: true %>
+        </div>
+
+        <div class="text-center">
+          <%= f.button :submit, "Sign up", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+      <br>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

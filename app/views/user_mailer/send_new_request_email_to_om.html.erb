@@ -1,0 +1,9 @@
+<h1>Hey hero! You just received a new request</h1>
+
+<p>Below are the details of the request</p>
+<p>Title: <%= @request.title %></p>
+<p><%= "Description: #{@request.description}" if @request.description != nil %></p>
+<p>You can see the request here:</p>
+<p><%= link_to 'Link to request', confirmation_request_url(@request) %></p>
+<p>You can access your dasboard:</p>
+<p><%= link_to 'Go to your dashboard', requests_url %></p>

@@ -1,0 +1,183 @@
+<div class="container">
+  <div class="col-sm-10 col-sm-offset-1">
+
+    <!-- REQUEST DETAILS -->
+      <% if  (@request.attachments == nil) && (@request.personal_note == nil)  %>
+      <div class="container-elements margin-top-space">
+      <% else %>
+      <div class="container-elements">
+      <% end %>
+
+      <div class="show-top-upper-elements">
+
+        <div class="hidden-xs">
+          <%= link_to requests_path, class: "chevron-back" do %>
+            <i class="glyphicon glyphicon-chevron-left"></i>
+          <% end  %>
+        </div>
+
+        <div class="element-card-upper-elements">
+          <h1>Request details</h1>
+
+          <div class="show-upper-elements">
+            <div class="row">
+              <div class="col-xs-12 col-md-4">
+                <div class="upper-elements-left">
+                  <div class="element-card-sender-avatar">
+                    <%= cl_image_tag(@request.slack_avatar) if @request.slack_avatar %>
+                  </div>
+
+                  <% if @request.slack_user_id %>
+                    <p><strong>Sender: </strong><%= @member.real_name.capitalize %></p>
+                  <% else %>
+                    <p><strong>Sender: </strong><%= @request.email %></p>
+                  <% end %>
+
+                  <% if @request.slack_user_id %>
+                    <% url = "https://hero--app.slack.com/messages/#{@member.id}/" %>
+                    <%= link_to "Chat with #{@member.real_name.capitalize}", url, target: "_blank", class: "chat-with-button" %>
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-md-8">
+                <div class="upper-elements-right">
+                  <h4><%= @request.title.capitalize %> </h4>
+
+                  <% if @request.description != ''  %>
+                    <p><strong>Description: </strong><%= @request.description.capitalize %></p>
+                  <% end %>
+
+                  <% if @request.attachments != nil %>
+                    <div class="element-card-attachment">
+                      <% @request.attachments.each do |attachment| %>
+                        <div class="element-card-file">
+                          <% if attachment.attachment_type == 'request' %>
+                            <%= cl_image_tag attachment.photo, height: 200, width: 300, crop: :fill %>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </div>
+                  <% end %>
+
+
+                  <div class="show-box-created-edit-cancel">
+                    <p>created <%= @request.created_at.to_formatted_s(:long) %></p>
+
+                    <% if @request.status == 'pending' %>
+                      <div class="show-box-edit-cancel">
+                        <p> • </p>
+                        <%= link_to "Edit", edit_request_path(@request), class: "show-link-edit-cancel" if policy(@request).edit? %>
+                        <p> • </p>
+                        <%= link_to "Cancel request", disable_request_path(@request), method: :post, data: {confirm: 'Are you sure?'}, class: "show-link-edit-cancel" if policy(@request).cancel? %>
+                      </div>
+                    <% end %>
+                  </div>
+
+                  <div class="show-buttons-done-decline">
+                    <% if @request.status == 'pending' %>
+                      <div class="element-actions">
+                        <%= render 'end_modals', request: @request %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% if @request.status == 'pending' %>
+      <!-- PERSONAL NOTE -->
+        <% if policy(@request).personal_note? %>
+          <div class="container-elements">
+            <div class="element-card-show">
+              <div class="show-personal-note">
+                <h2>Personal note</h2>
+                <div class="container-personal-note-elements">
+                  <div class="row">
+                    <% if @request.personal_note != nil %>
+                      <div class="col-xs-12 col-md-4">
+                        <div class="personal-note-left">
+                            <br>
+                            <p><strong>Your personal note: </strong><%= @request.personal_note %></p>
+                          <% if @request.attachments != nil %>
+                            <% @request.attachments.each do |attachment| %>
+                              <div class="element-card-file">
+                                <% if attachment.attachment_type == 'personal' %>
+                                  <%= cl_image_tag attachment.photo, height: 150, width: 200, crop: :fill %>
+                                <% end %>
+                              </div>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      </div>
+                    <% end %>
+                    <div class="col-xs-12 col-md-8">
+                      <div class="personal-note-right">
+                        <%= simple_form_for @request, url: note_request_path(@request), method: :put, html: { multipart: true } do |f| %>
+                        <br>
+                          <%= f.input :personal_note, label: false, class: 'form-control', placeholder: "You can add a personal note. It is only visible by you" %>
+                          <!-- UPLOADER FOR FILE WHEN CREATE A NEW REQUEST starts here -->
+                          <%= f.fields_for :attachements do |p| %>
+                            <%= p.label :file %>
+                            <%= p.file_field :photo, multiple:true, name: "attachments[photo][]" %>
+                          <% end %>
+                          <!-- UPLOADER FOR FILE WHEN CREATE A NEW REQUEST ends here -->
+                          <br>
+                          <%= f.submit "#{@request.personal_note == nil ? 'Add a' : 'Edit your'} personal note", class: "btn btn-success" %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+    <% else %>
+
+      <!-- PERSONAL NOTE SHOW FOR OM IF REQUEST != PENDING -->
+      <% if policy(@request).personal_note? %>
+        <% if @request.personal_note != nil %>
+          <div class="container-elements">
+            <div class="element-card-show">
+              <div class="show-personal-note">
+                <h2>Personal note</h2>
+                <br>
+                <p><strong>Your personal note: </strong><%= @request.personal_note %></p>
+              </div>
+              <% if @request.attachments != nil %>
+                <% @request.attachments.each do |attachment| %>
+                  <div class="element-card-file">
+                    <% if attachment.attachment_type == 'personal' %>
+                      <%= cl_image_tag attachment.photo, height: 150, width: 200, crop: :fill %>
+                    <% end %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+      <!-- END COMMENT -->
+      <div class="container-elements">
+        <div class="element-card-show">
+          <div class="show-personal-note">
+            <h2>This request has been <strong><%= @request.status.upcase %></strong></h2>
+            <% if @request.end_comment != '' %>
+              <p><strong>You added the following message:</strong></p>
+              <p><em><%= @request.end_comment %></em></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

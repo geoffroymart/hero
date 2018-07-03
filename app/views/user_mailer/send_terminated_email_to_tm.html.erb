@@ -1,0 +1,12 @@
+<h1><%= 'Hooray!!' if @request.status == 'done' %></h1>
+<h3><%= "Your request has been #{@request.status}"%></h3>
+<p><%= 'You can thank you hero ;)' if @request.status == 'done' %></p>
+<br>
+<% if @request.end_comment != '' %>
+  <p>Your hero left you the following message:</p>
+  <p><em><%= @request.end_comment %></em></p>
+  <br>
+<% end %>
+<p>As a reminder, below are the details of the request</p>
+<p>Title: <%= @request.title %></p>
+<p><%= "Description: #{@request.description}" if @request.description != nil %></p>

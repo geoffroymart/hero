@@ -1,0 +1,140 @@
+#create-button-div {
+  background-color: white;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 37px;
+}
+
+.create-button {
+  margin: 15px;
+
+
+}
+
+.red {
+  color: $red;
+}
+
+.green {
+  color: $green;
+}
+
+.cross-search-bar-button {
+  border-radius: 50%;
+  color: grey;
+  text-align: center;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    color: white;
+    background-color: grey;
+    text-decoration: none;
+    border: none;
+  }
+}
+
+.plus-button {
+  border-radius: 50%;
+  color: $green;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    color: white;
+    background-color: $green;
+    text-decoration: none;
+  }
+}
+
+button {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.done-decline-buttons {
+  font-size: 30px;
+}
+
+.element-card-attachment {
+  display: flex;
+  justify-content: space-around;
+}
+
+.element-card-email {
+  font-size: 14px;
+}
+
+.see-history-button {
+  background-color: white;
+  text-align: center;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: grey;
+  p {
+    margin: 0;
+  }
+  &:hover {
+    font-weight: bold;
+    text-decoration: none;
+    color: grey;
+  }
+}
+
+.chevron-back {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ border-radius: 50%;
+ color: $green;
+ font-size: 25px;
+ font-weight: bold;
+ height: 40px;
+ width: 40px;
+ position: absolute;
+ margin-left: -50px;
+ margin-top: 20px;
+ &:hover {
+   color: white;
+   background-color: $green;
+   text-decoration: none;
+ }
+}
+
+.show-link-edit-cancel {
+  font-size: 13px;
+  color: grey;
+  text-decoration: none;
+  &:hover {
+    color: $green;
+    text-decoration: none;
+  }
+}
+
+.chat-with-button {
+  color: $green;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 10px;
+  border: 1px $green solid;
+  border-radius: 3px;
+  &:hover{
+    text-decoration: none;
+    background-color: $green;
+    color: white;
+  }
+}

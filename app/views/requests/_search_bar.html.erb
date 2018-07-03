@@ -1,0 +1,9 @@
+<div>
+  <%= form_tag @requests_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search in all your requests"
+    %>
+  <% end %>
+</div>

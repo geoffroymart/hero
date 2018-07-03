@@ -1,0 +1,16 @@
+
+<div class="container col-sm-6 col-sm-offset-3"">
+ <div class="form-group">
+   <h1> Edit your profile</h1>
+   <br>
+    <%= simple_form_for @profile do |f| %>
+    <%= f.input :first_name, as: :string %>
+    <%= f.input :last_name, as: :string %>
+    <%= f.input :avatar %>
+    <div class="form-actions text-center">
+      <%= link_to 'Back dashboard', '', class: "btn btn-warning" %>
+      <%= f.button :submit, "Update", class: "btn-primary" %>
+    </div>
+  <% end %>
+ </div>
+</div>

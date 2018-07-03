@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="row container-elements">
+
+        <div class="col-xs-12 top-actions">
+          <h1>Requests</h1>
+            <div id="top-actions-index-search-plus">
+              <div class="row">
+                <div class="col-xs-12 col-sm-10">
+                  <div id="search-bar">
+                    <%= form_tag @requests_path, method: :get do %>
+                      <%= text_field_tag :query,
+                        params[:query],
+                        class: "form-control",
+                        placeholder: "Search in pending requests"
+                      %>
+                    <% end %>
+                    <%= link_to requests_path, class: "cross-search-bar-button" do %>
+                      <i class="far fa-times-circle"></i>
+                    <% end  %>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-2">
+                  <%= link_to new_request_path, class: "plus-button" do %>
+                    <i class="fas fa-plus"></i>
+                  <% end  %>
+                </div>
+              </div>
+            </div>
+          <div class="row">
+          </div>
+        </div>
+
+        <% if @requests.any? { |r| r.status != 'pending'} %>
+          <div id="create-button-div">
+            <%= link_to 'Create a request', new_request_path, class: "btn btn-success create-button" %>
+          </div>
+        <% end %>
+
+        <% @requests.each do |request| %>
+          <div class="row">
+            <div class="col-xs-12">
+              <%= render 'request_card', request: request %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="container-elements">
+        <%= link_to 'See history', history_requests_path, class: "see-history-button" %>
+      </div>
+    </div>
+    </div>
+  </div>

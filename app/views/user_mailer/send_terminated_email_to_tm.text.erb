@@ -1,0 +1,8 @@
+<%= 'Hooray!!' if @request.status == 'done' %>
+<%= "Your request has been #{@request.status}"%><%= 'You can thank you hero ;)' if @request.status == 'done' %>
+
+<% if @request.end_comment != '' %>
+  Your hero left you the following message:
+  <%= @request.end_comment %>
+
+<% end %>As a reminder, below are the details of the requestTitle: <%= @request.title %><%= "Description: #{@request.description}" if @request.description != nil %>

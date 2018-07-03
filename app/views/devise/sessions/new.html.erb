@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="element-card-devise">
+      <div class="text-center">
+        <h2>Sign in</h2>
+      </div>
+      <br>
+      <div class="text-center btn-lg">
+        <%- if devise_mapping.omniauthable? %>
+          <%- resource_class.omniauth_providers.each do |provider| %>
+            <%= link_to omniauth_authorize_path(resource_name, provider) do %>
+            <img src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"/>
+            <% end %>
+          <% end -%>
+        <% end -%>
+      </div>
+      <br>
+      <div class="text-center">
+      <p>- OR -</p>
+      <p>Sign in with your email</p>
+      </div>
+      <br>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= f.input :email, label: false, placeholder: 'email', required: true, autofocus: true %>
+          <%= f.input :password, label: false, placeholder: 'password', required: true %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+          <div class="text-center">
+            <%= f.button :submit, "Sign in", class: 'btn btn-primary' %>
+          </div>
+      <% end %>
+      <br>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
+
+

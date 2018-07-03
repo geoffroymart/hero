@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="container-elements">
+
+        <div class="hidden-xs">
+          <%= link_to requests_path, class: "chevron-back" do %>
+            <i class="glyphicon glyphicon-chevron-left"></i>
+          <% end  %>
+        </div>
+
+        <div class="col-xs-12 top-actions">
+          <h1>Archived requests</h1>
+            <div id="top-actions-index-search-plus">
+              <div class="row">
+                <div class="col-xs-12 col-sm-10">
+                  <div id="search-bar">
+                    <%= form_tag @requests_path, method: :get do %>
+                      <%= text_field_tag :query,
+                        params[:query],
+                        class: "form-control",
+                        placeholder: "Search in past requests"
+                      %>
+                    <% end %>
+                    <%= link_to history_requests_path, class: "cross-search-bar-button" do %>
+                      <i class="far fa-times-circle"></i>
+                    <% end  %>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-2">
+                  <%= link_to new_request_path, class: "plus-button" do %>
+                    <i class="fas fa-plus"></i>
+                  <% end  %>
+                </div>
+              </div>
+            </div>
+          <div class="row">
+          </div>
+        </div>
+
+<!-- elzkhfzje -->
+
+        <% @requests.each do |request| %>
+          <div class="element-card %>">
+            <%= link_to request_path(request), class: "card-left-elements" do %>
+              <% if request.slack_avatar %>
+                <div class="element-card-sender-avatar-index">
+                  <%= cl_image_tag(request.slack_avatar) %>
+                </div>
+              <% elsif request.email %>
+                <div class="element-card-sender-first-letter">
+                  <%= request.email.first.capitalize %>
+                </div>
+              <% else %>
+                <div class="element-card-avatar-background">
+                  <%= image_tag "/logo-hero-white.png", class: "element-card-avatar-placeholder" %>
+                </div>
+              <% end %>
+
+              <div class="card-title-description-part">
+                <div class="element-card-title">
+                  <% if request.title.length > 50 %>
+                    <%= "#{request.title.to_s.slice(0..50)}…" if request.title.length > 50 %>
+                  <% else %>
+                    <%= request.title %>
+                  <% end %>
+                </div>
+
+                <div class="element-card-description">
+                  <% if request.description %>
+                    <%= request.description.length > 50 ? "#{request.description.to_s.slice(0..50)}…" : request.description  %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+
+            <div class="card-right-elements history-status">
+              <div class="element-card-date">
+                <div class="element-dates">
+                  <%= "created #{(request.created_at + 2.hours).to_formatted_s(:long)}" %>
+                </div>
+              </div>
+              <% if request.status == 'done' %>
+                <p class="green"><%= request.status %></p>
+              <% else %>
+                <p class="red"><%= request.status %></p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

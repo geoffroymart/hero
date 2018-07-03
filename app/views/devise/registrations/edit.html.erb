@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="element-card-devise">
+
+      <div class="text-center">
+        <h2>Edit <%= resource_name.to_s.humanize %></h2>
+        <br>
+      </div>
+
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+
+          <%= f.simple_fields_for :profile do |profile_field| %>
+            <div class="text-center">
+              <% if current_user.profile.avatar_url != nil %>
+                <% url = cl_image_path(current_user.profile.avatar_url) %>
+                <%= cl_image_tag url, :width=>150, :height=>150, :crop=>"fill", class: "avatar-edit text-center" %>
+              <% end %>
+            <%= profile_field.input :avatar, label: false %>
+            <%= profile_field.input :avatar_cache, as: :hidden %>
+            </div>
+            <%= profile_field.input :first_name, label: false, placeholder: 'First name', required: false %>
+            <%= profile_field.input :last_name, label: false, placeholder: 'Last name', required: false %>
+          <% end %>
+
+          <%= f.input :email, label: false, placeholder: 'email*', required: true %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
+
+          <%= f.input :password, label: false, placeholder: 'password', autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+          <%= f.input :password_confirmation, label: false, placeholder: 'Confirm your password', required: false %>
+          <%= f.input :current_password, label: false, placeholder: 'Current password*', hint: "we need your current password to confirm your changes", required: true %>
+
+          <div class="text-center">
+            <%= link_to "Back", :back, class: 'btn btn-warning' %>
+            <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+          </div>
+        </div>
+      <% end %>
+
+
+      <br>
+      <div class="text-center">
+        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+      </div>
+
+    </div>
+  </div>
+</div>

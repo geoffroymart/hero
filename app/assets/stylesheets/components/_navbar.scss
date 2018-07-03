@@ -1,0 +1,122 @@
+/* Main navbar */
+a {
+  text-decoration: none;
+}
+
+.navbar-hero {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  background: $green;
+  transition: all 0.3s ease;
+  height: 70px;
+  padding: 0px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  posistion: relative;
+}
+
+/* Logo */
+.navbar-hero-brand {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/* User Avatar */
+.navbar-hero .avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+/* Leftt section */
+.navbar-hero-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h2 {
+    margin: 0;
+    color: white;
+    font-weight: bold;
+    font-family: Raleway;
+  }
+}
+
+/* Right section */
+.navbar-hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Navbar link */
+.navbar-hero-link {
+  cursor: pointer;
+  color: white;
+  font-weight:lighter;
+  font-size: 15px;
+  padding-left: 10px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.requests-link {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  border: 1px solid white;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin-right: 20px;
+  &:hover {
+    text-decoration: none;
+    color: $green;
+    background-color: white;
+  }
+}
+
+.name {
+  color: white;
+  cursor: default;
+  font-size: 12px;
+}
+
+/* Dropdown menu */
+.navbar-hero-dropdown-menu {
+  margin-top: 15px;
+  box-shadow: 1px 1px 4px #E6E6E6;
+  border-color: #E6E6E6;
+}
+.navbar-hero-dropdown-menu li > a {
+  transition: color 0.3s ease;
+  font-weight: lighter !important;
+  color: #999999 !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  padding: 10px 20px;
+}
+.navbar-hero-dropdown-menu li > a:hover {
+  background: transparent !important;
+  color: black !important;
+}
+.navbar-hero-dropdown-menu:before {
+  content: ' ';
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  right: 10px;
+  top: -6px;
+  background-color: white;
+  transform: rotate(45deg);
+  border-left: 1px solid #E6E6E6;
+  border-top: 1px solid #E6E6E6;
+}
+
+.dropdown-toggle {
+  color: white;
+}

@@ -1,0 +1,43 @@
+.avatar-edit {
+  border-radius: 50%;
+}
+
+.element-card-sender-avatar img{
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+}
+
+.element-card-sender-avatar-index img{
+  height:55px;
+  width:55px;
+  border-radius: 50%;
+}
+
+.element-card-sender-first-letter {
+  display: flex;
+  font-size: 30px;
+  font-weight: lighter;
+  height:55px;
+  width: 55px;
+  color: white;
+  background-color: lightgrey;
+  border-radius: 50%;
+  justify-content:space-around;
+  align-items:center;
+}
+
+.element-card-avatar-placeholder {
+  height:40px;
+  width: 40px;
+}
+
+.element-card-avatar-background {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  background-color: lightgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

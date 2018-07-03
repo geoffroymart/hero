@@ -1,0 +1,9 @@
+Hey hero! You just received a new request<
+
+Below are the details of the request
+Title: <%= @request.title %>
+<%= "Description: #{@request.description}" if @request.description != nil %>
+You can see the request here:
+<%= link_to 'Link to request', confirmation_request_url(@request) %>
+You can access your dasboard:
+<%= link_to 'Go to your dashboard', requests_url %>

@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="container-elements">
+      <div class="element-card-show">
+        <h2><%= "#{@request.id.nil? ? 'Create a' : 'Edit your'}  request" %></h2>
+        <br>
+        <%= simple_form_for @request, html: { multipart: true } do |f| %>
+
+          <% if current_user.nil? %>
+            <%= f.input :email, class: 'form-control', placeholder: 'Enter your email here' %>
+          <!-- the following elsif needs to happen when OM signed in with slack -->
+          <% elsif current_user %>
+            <%  if @request.id.nil?%>
+              <%= f.input :slack_user_id, collection: @members, label_method: :real_name, value: :id %>
+            <% end %>
+          <% else %>
+            <%= f.input :email, class: 'form-control', placeholder: 'You can assign a requester (enter email)' %>
+          <% end %>
+
+          <%= f.input :title, class: 'form-control', placeholder: 'What do you want to ask to your hero? (50 char. max.)' %>
+          <%= f.input :description, class: 'form-control', placeholder: 'You may want to better explain your request here' %>
+
+          <!-- UPLOADER FOR FILE WHEN CREATE A NEW REQUEST starts here -->
+          <%= f.fields_for :attachements do |p| %>
+            <%= p.label :file %><br>
+            <%= p.file_field :photo, multiple:true, name: "attachments[photo][]" %>
+          <% end %>
+          <!-- UPLOADER FOR FILE WHEN CREATE A NEW REQUEST ends here -->
+          <hr>
+          <%= f.submit "Submit", class: "btn btn-success"  %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+// MODAL -  done and decline //
+
+.modal-content {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+}
+
+.modal-header {
+  text-align: center;
+  color: white;
+  border-bottom: none;
+  margin-top: 20px;
+  padding: 0;
+  font-size: 18px;
+}
+
+.modal-body {
+  padding: 20px 70px;
+}
+
+.form-group {
+  width: auto;
+}
+//  background color - modal done //
+.done-content {
+  background-color: $green;
+}
+
+//  background  color - modal decline //
+.decline-content {
+  background-color: $red;
+}
+// buttons
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.cancel {
+  color: white;
+}
+
+.decline {
+  border-radius: 3px;
+  background-color: white;
+  color: $red;
+  font-weight: bold;
+}
+
+.done {
+  border-radius: 3px;
+  background-color: white;
+  color: $green;
+  font-weight: bold;
+}
+
+
+
+
+

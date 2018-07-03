@@ -1,0 +1,40 @@
+<div class="request-card <%= request.request_read.unread?(current_user) ? 'unread' : ''%>">
+  <div class="request-card--date">
+    <%= "created #{(request.created_at + 2.hours).to_formatted_s(:long)}" %>
+  </div>
+  <div class="row">
+    <div class="col-xs-3 col-sm-2">
+      <div class="request-card--avatar">
+        <%= render 'requests/request_card/avatar', request: request %>
+      </div>
+    </div>
+    <div class="col-xs-9 col-sm-10">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="request-cart--title">
+            <% if request.title %>
+              <%= request.title.truncate 50 %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-sm-8 hidden-xs">
+          <div class="request-card--description">
+            <% if request.description %>
+              <%= request.description.truncate 50 %>
+            <% end %>
+          </div>
+        </div>
+
+        <%= link_to '', request_path(request), class: "request-card--link" %>
+
+        <div class="col-xs-12 col-sm-4">
+          <div class="request-card--actions">
+            <%= render 'end_modals', request: request %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
