@@ -21,8 +21,8 @@
                 <div class="upper-elements-right">
                   <h4><%= @request.title.capitalize %> </h4>
 
-                  <% if @request.try(:description) && @request.description != ''  %>
-                    <p><strong>Description: </strong><%= @request.description.capitalize %></p>
+                  <% if @request.description && @request.description != ''  %>
+                    <p><strong>Description: </strong><%= @request.description.try(:capitalize) %></p>
                   <% end %>
 
                   <div class="element-card-attachment">
