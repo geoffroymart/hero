@@ -18,7 +18,7 @@ class SlackCommandsController < ApplicationController
         text: "Your request has been sent to your Hero!",
         attachments: [
           {
-            text: "You can see/update/add a file to it here: https://app-poof.herokuapp.com#{confirmation_request_path(@request)}"
+            text: "You can see/update/add a file to it here: https://hero--app.herokuapp.com#{confirmation_request_path(@request)}"
           }
         ]
       },
@@ -36,7 +36,7 @@ class SlackCommandsController < ApplicationController
     @requests = Request.where(status:"pending", disable: false, slack_user_id: params[:user_id]).order(created_at: :desc)
     attachments = []
     @requests.each do|request|
-      attachments <<  { text: " #{request.title} : https://app-poof.herokuapp.com#{confirmation_request_path(request)}",
+      attachments <<  { text: " #{request.title} : https://hero--app.herokuapp.com#{confirmation_request_path(request)}",
 
                         color: "#8587dc",
                         }
